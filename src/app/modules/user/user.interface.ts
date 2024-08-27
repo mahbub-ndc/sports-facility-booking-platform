@@ -1,3 +1,5 @@
+import { Model } from "mongoose";
+
 export interface TUser {
   name: string;
   email: string;
@@ -7,4 +9,8 @@ export interface TUser {
   phone: string;
   role: "user" | "admin";
   address: string;
+}
+
+export interface UserModel extends Model<TUser> {
+  isUserExistsByEmail(email: string): Promise<TUser>;
 }
