@@ -8,7 +8,7 @@ export const userZodValidationSchema = z.object({
     needsPasswordChange: z.boolean().optional(),
     passwordChangedAt: z.date().optional(),
     phone: z.string().min(11, "Phone number must be at least 11 digits long"),
-    role: z.enum(["user", "admin"]).default("user"),
+    role: z.enum(["user", "admin"]),
     address: z.string().min(1, "Address is required"),
   }),
 });
