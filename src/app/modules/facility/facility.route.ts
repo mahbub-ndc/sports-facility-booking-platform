@@ -13,4 +13,10 @@ router.post(
 );
 router.get("/", facilityController.getAllfacilities);
 
+router.put(
+  "/:id",
+  auth(USER_ROLE.admin),
+  facilityController.updateSingleFacility
+);
+
 export const facilityRoute = router;

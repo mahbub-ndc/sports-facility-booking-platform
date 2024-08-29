@@ -23,7 +23,18 @@ const getAllfacilities = async (query: Record<string, unknown>) => {
   };
 };
 
+const updateSingleFacility = async (
+  id: string,
+  payload: Partial<TFacility>
+) => {
+  const result = await Facility.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
+  return result;
+};
+
 export const facilityService = {
   createFacility,
   getAllfacilities,
+  updateSingleFacility,
 };
