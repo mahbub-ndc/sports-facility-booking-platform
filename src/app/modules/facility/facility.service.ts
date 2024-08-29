@@ -1,4 +1,4 @@
-import QueryBuilder from "../../builder/queryBuilder";
+import QueryBuilder from "../../builder/QueryBuilder";
 import { facilitySearchItem } from "./facility.constant";
 import { TFacility } from "./facility.interface";
 import { Facility } from "./facility.model";
