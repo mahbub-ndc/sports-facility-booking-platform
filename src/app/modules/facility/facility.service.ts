@@ -33,8 +33,18 @@ const updateSingleFacility = async (
   return result;
 };
 
+const deleteSingleFacility = async (id: string) => {
+  const result = await Facility.findByIdAndUpdate(
+    id,
+    { isDeleted: true },
+    { new: true }
+  );
+  return result;
+};
+
 export const facilityService = {
   createFacility,
   getAllfacilities,
   updateSingleFacility,
+  deleteSingleFacility,
 };

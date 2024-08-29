@@ -18,5 +18,10 @@ router.put(
   auth(USER_ROLE.admin),
   facilityController.updateSingleFacility
 );
+router.delete(
+  "/:id",
+  auth(USER_ROLE.admin),
+  facilityController.deleteSingleFacility
+);
 
 export const facilityRoute = router;
