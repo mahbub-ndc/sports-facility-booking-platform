@@ -1,3 +1,5 @@
+import QueryBuilder from "../../builder/queryBuilder";
+import { facilitySearchItem } from "./facility.constant";
 import { TFacility } from "./facility.interface";
 import { Facility } from "./facility.model";
 
@@ -6,6 +8,22 @@ const createFacility = async (payload: TFacility) => {
   return result;
 };
 
+const getAllfacilities = async (query: Record<string, unknown>) => {
+  const facilityQuery = new QueryBuilder(Facility.find(), query)
+    .search(facilitySearchItem)
+    .filter()
+    .sort()
+    .paginate()
+    .fields();
+  const result = await facilityQuery.modelQuery;
+  const meta = await facilityQuery.countTotal();
+  return {
+    meta,
+    result,
+  };
+};
+
 export const facilityService = {
   createFacility,
+  getAllfacilities,
 };
