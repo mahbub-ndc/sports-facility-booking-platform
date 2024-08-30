@@ -1,7 +1,6 @@
 import { model, Schema } from "mongoose";
 import { TBookings } from "./booking.interface";
 import { Facility } from "../facility/facility.model";
-import { User } from "../user/user.model";
 
 const bookingSchema = new Schema<TBookings>({
   facility: {
@@ -33,7 +32,7 @@ const bookingSchema = new Schema<TBookings>({
     type: String,
     enum: ["confirmed", "unconfirmed", "canceled"],
     required: true,
-    default: "unconfirmed",
+    default: "confirmed",
   },
 });
 

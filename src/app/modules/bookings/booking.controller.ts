@@ -12,7 +12,18 @@ const createBooking = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const checkAvailability = catchAsync(async (req, res) => {
+  // console.log(req.query.date);
+  const result = await bookingService.checkAvailability(req.query);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Availability checked successfully",
+    data: result,
+  });
+});
 
 export const bookingController = {
   createBooking,
+  checkAvailability,
 };
