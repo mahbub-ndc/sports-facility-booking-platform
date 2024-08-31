@@ -20,19 +20,21 @@ const config_1 = __importDefault(require("../config"));
 const user_model_1 = require("../modules/user/user.model");
 const auth = (...requiredRoles) => {
     return (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-        const token = req.headers.authorization;
+        var _a;
+        const token = (_a = req.headers.authorization) === null || _a === void 0 ? void 0 : _a.split(" ")[1];
+        // console.log(token);
         if (!token) {
-            throw new AppError_1.default(http_status_1.default.UNAUTHORIZED, "You are not authorized!");
+            throw new AppError_1.default(http_status_1.default.UNAUTHORIZED, "You have no access to this route!");
         }
         const decoded = jsonwebtoken_1.default.verify(token, config_1.default.jwt_access_secret);
         const { email, role } = decoded;
         const user = yield user_model_1.User.isUserExistsByEmail(email);
         if (!user) {
-            throw new AppError_1.default(http_status_1.default.NOT_FOUND, "This user is not found !");
+            throw new AppError_1.default(http_status_1.default.NOT_FOUND, "You have no access to this route!");
         }
         console.log(user.role);
-        if (requiredRoles && !requiredRoles.includes(role)) {
-            throw new AppError_1.default(http_status_1.default.UNAUTHORIZED, "You are not authorized!");
+        if (requiredRoles.length && !requiredRoles.includes(role)) {
+            throw new AppError_1.default(http_status_1.default.UNAUTHORIZED, "You have no access to this route");
         }
         req.user = decoded;
         next();

@@ -30,8 +30,10 @@ const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
         role: user.role,
     };
     const accessToken = (0, auth_util_1.createToken)(jwt_payload, config_1.default.jwt_access_secret, config_1.default.jwt_expires_in);
+    const refreshToken = (0, auth_util_1.createToken)(jwt_payload, config_1.default.jwt_refresh_secret, config_1.default.jwt_refresh_expires_in);
     return {
         accessToken,
+        refreshToken,
         data: {
             _id: user === null || user === void 0 ? void 0 : user._id,
             name: user.name,
