@@ -1,7 +1,7 @@
-Installation
-To install the application, follow these steps:
 
-Clone the repository:
+## Installation
+
+To install the application, follow these steps:
 
 git clone https://github.com/mahbub-ndc/sports-facility-booking-platform.git
 
