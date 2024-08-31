@@ -23,7 +23,6 @@ const bookingSchema = new Schema<TBookings>({
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true,
   },
   payableAmount: {
     type: Number,
