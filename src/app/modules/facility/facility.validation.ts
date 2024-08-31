@@ -8,3 +8,13 @@ export const facilityValidationZodSchema = z.object({
     isDeleted: z.boolean().optional(),
   }),
 });
+
+export const updateFacilityValidationSchema = z.object({
+  body: z.object({
+    name: z.string().min(1, "Name is required").optional(),
+    description: z.string().optional(),
+    pricePerHour: z.number().optional(),
+    location: z.string().optional(),
+    isDeleted: z.boolean().optional(),
+  }),
+});

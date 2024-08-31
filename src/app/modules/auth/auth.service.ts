@@ -23,8 +23,15 @@ const loginUser = async (payload: TLogin) => {
     config.jwt_access_secret as string,
     config.jwt_expires_in as string
   );
+
+  const refreshToken = createToken(
+    jwt_payload,
+    config.jwt_refresh_secret as string,
+    config.jwt_refresh_expires_in as string
+  );
   return {
     accessToken,
+    refreshToken,
     data: {
       _id: user?._id,
       name: user.name,
