@@ -24,9 +24,9 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, cookie_parser_1.default)());
 app.use("/api/", routes_1.default);
-app.use(globalErrorHandler_1.default);
-app.use(notFound_1.default);
 app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.send("Server is working successfully!");
 }));
+app.use(globalErrorHandler_1.default);
+app.use(notFound_1.default);
 exports.default = app;

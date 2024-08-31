@@ -17,6 +17,7 @@ const userSchema = new Schema<TUser>(
     password: {
       type: String,
       required: true,
+      select: 0,
     },
 
     needsPasswordChange: {
@@ -47,7 +48,7 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.statics.isUserExistsByEmail = async function (email: string) {
-  return await User.findOne({ email });
+  return await User.findOne({ email }).select("+password");
 };
 
 userSchema.statics.isPasswordMatched = async function (

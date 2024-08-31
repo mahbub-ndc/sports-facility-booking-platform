@@ -14,12 +14,12 @@ app.use(cookieParser());
 
 app.use("/api/", router);
 
-app.use(globalErrorHandler);
-
-app.use(notFound);
-
 app.get("/", async (req: Request, res: Response) => {
   res.send("Server is working successfully!");
 });
+
+app.use(globalErrorHandler);
+
+app.use(notFound);
 
 export default app;
