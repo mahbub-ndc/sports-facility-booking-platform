@@ -4,7 +4,7 @@
 To install the application, follow these steps:
 
  ```bash
-   git clone https://github.com/RagibShariar/level-2-assignment-2.git
+   https://github.com/mahbub-ndc/sports-facility-booking-platform.git
    ```
 
 2. **Install the dependencies:**
