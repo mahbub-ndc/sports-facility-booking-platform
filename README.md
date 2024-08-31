@@ -5,6 +5,8 @@ Clone the repository:
 
 git clone https://github.com/mahbub-ndc/sports-facility-booking-platform.git
 
-Install the dependencies:
+2. **Install the dependencies:**
 
-npm install
+   ```bash
+   npm install
+   ```
