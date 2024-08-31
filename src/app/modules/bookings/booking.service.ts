@@ -1,3 +1,6 @@
+import httpStatus from "http-status";
+import AppError from "../../errors/AppError";
+import { Facility } from "../facility/facility.model";
 import { User } from "../user/user.model";
 import { TBookings } from "./booking.interface";
 import { Booking } from "./booking.model";
@@ -9,11 +12,18 @@ const createBooking = async (
 ) => {
   const { email } = userData;
   const user = await User.isUserExistsByEmail(email as string);
-  console.log(user._id);
+
+  //console.log(user._id);
   const bookingData = {
     ...payload,
     user: user?._id,
   };
+
+  const facility = await Facility.findById(payload.facility);
+  if (!facility) {
+    throw new AppError(httpStatus.NOT_FOUND, "Facilty not found");
+  }
+
   const result = await Booking.create(bookingData);
   return result;
 };
