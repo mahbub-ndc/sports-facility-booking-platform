@@ -1,5 +1,5 @@
 
-## Installation
+1.## Installation
 
 To install the application, follow these steps:
 
@@ -12,3 +12,9 @@ To install the application, follow these steps:
    ```bash
    npm install
    ```
+   
+3. **Start the application:
+
+```sh
+   npm run dev
+```
