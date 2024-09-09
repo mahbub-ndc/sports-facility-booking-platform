@@ -14,7 +14,7 @@ router.post(
   validateRequest(facilityValidationZodSchema),
   facilityController.createFacility
 );
-router.get("/", facilityController.getAllfacilities);
+router.get("/", auth(USER_ROLE.admin), facilityController.getAllfacilities);
 
 router.put(
   "/:id",

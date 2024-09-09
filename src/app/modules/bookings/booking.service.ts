@@ -24,6 +24,11 @@ const createBooking = async (
     throw new AppError(httpStatus.NOT_FOUND, "Facilty not found");
   }
 
+  const booking = await Booking.findOne({ startTime: payload.startTime });
+  if (booking) {
+    throw new AppError(httpStatus.NOT_ACCEPTABLE, "Slot is not available!");
+  }
+
   const result = await Booking.create(bookingData);
   return result;
 };
